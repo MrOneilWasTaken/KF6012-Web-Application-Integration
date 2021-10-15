@@ -25,7 +25,7 @@
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
                 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
                 <meta charset="UTF-8">
-                <link rel="stylesheet" href="assets/style.css">
+                <link rel="stylesheet" href="./assets/style.css">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>$title</title>
             </head>
@@ -63,9 +63,10 @@ EOT;
         }
 
         //Adds a smaller heading to the body
+        /*
         public function addHeading2($text){
             $this->setBody("<h2>$text</h2>");      
-        }
+        }*/
 
         //Adds a paragraph to the body
         public function addParagraph($text){
@@ -74,7 +75,7 @@ EOT;
 
         //Adds an image to the body
         public function addImage($imageName){
-            $this->setBody("<img src='assets/$imageName' alt='dog' >");
+            $this->setBody("<img src='./assets/$imageName' alt='dog' >");
         }
 
         //The final function which generates the web page -----------------------------------------------------
