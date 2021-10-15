@@ -1,18 +1,21 @@
 <?php 
     class WebPage
     {
+        //Establishing variables for each section of HTML -----------------------------------------------------
         private $head;
 
         private $body;
 
         private $foot;
 
+        //Constructor that automatically runs code (Essentialy a void setup() from Java/C) -----------------------------------------------------
         public function __construct($title,$heading){
             $this->setHead($title);
             $this->addHeading1($heading);
             $this->setFoot();
         }
 
+        //Functions that SET the relevent parts of the HTML (Setters) -----------------------------------------------------
         protected function setHead($title){
             $this->head = <<<EOT
             <!DOCTYPE html>
@@ -30,16 +33,8 @@
 EOT;
         }
 
-        private function getHead(){
-            return $this->head;
-        }
-
         protected function setBody($text){
             $this->body .= $text;
-        }
-
-        private function getBody(){
-            return $this->body;
         }
 
         protected function setFoot(){
@@ -49,33 +44,42 @@ EOT;
 EOT;
         }
 
+        //Functions that GET the relevent parts of the HTML (Getters) -----------------------------------------------------
+        private function getBody(){
+            return $this->body;
+        }
+        private function getHead(){
+            return $this->head;
+        }
         private function getFoot(){
             return $this->foot;
         }    
         
-        
+        //Various functions that would be useful for this class -----------------------------------------------------
+
+        //Adds a heading to the body
         protected function addHeading1($text){
             $this->setBody("<h1>$text</h1>");      
         }
 
+        //Adds a smaller heading to the body
         public function addHeading2($text){
             $this->setBody("<h2>$text</h2>");      
         }
 
+        //Adds a paragraph to the body
         public function addParagraph($text){
             return $this->setBody("<p>" . $text . "</p>");
         }
 
+        //Adds an image to the body
         public function addImage($imageName){
             $this->setBody("<img src='assets/$imageName' alt='dog' >");
         }
 
+        //The final function which generates the web page -----------------------------------------------------
         public function generateWebpage(){
             return $this->getHead() . " " . $this->getBody() . " " . $this->getFoot();
         }
-
-
-    }
-
-    
+    }  
 ?>
