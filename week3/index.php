@@ -6,6 +6,9 @@
     include 'src/Request.php';
     include 'src/JSONResponse.php';
 
+    $userRequest = new Request("/webappintegration/week3/");  
+
+    /*
     $url = $_SERVER["REQUEST_URI"];
 
     $basepath= "/webappintegration/week3/";
@@ -15,7 +18,8 @@
     $path = strtolower($path);
     $path = trim($path,"/");
 
-    switch($path){
+    */   
+    switch($userRequest->generateRequest()){
         case '':
         case 'home':
             $homePage = new HomePage("Week 3: Index Page", "Creating an API","This isnt a dog");
@@ -35,42 +39,49 @@
             echo $docPage->generateWebpage();
             break;
         case 'api':
-            header("Access-Control-Allow-Origin: *");
-            header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
-            header("Access-Control-Max-Age: 3600");
-            header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers,Authorization, X-Requested-With");
-            header("Content-Type: application/json; charset=UTF-8");
+            $api = new JSONResponse();
+            $api->settingHeaders();
+            
             $myArray['name'] = "SamOneil";
             $myArray['studentID'] = "w18018623";
             $myArray['documentationURL'] = "/webappintegration/week3/documentation";
             $myArray['contactURL'] = "/webappintegration/week3/contact";
-            echo json_encode($myArray);
+
+            echo $api->printJSON($myArray);
             break;
         case 'api/meals':
-            header("Access-Control-Allow-Origin: *");
-            header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
-            header("Access-Control-Max-Age: 3600");
-            header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers,Authorization, X-Requested-With");
-            header("Content-Type: application/json; charset=UTF-8");
+            $apiMeals = new JSONResponse();
+            $apiMeals->settingHeaders();
+
             $myArray['breakfast'] = "Boiled eggs";
             $myArray['lunch'] = "Scrambled eggs";
             $myArray['dindins'] = "Fried eggs";
-            echo json_encode($myArray);
+            
+            echo $apiMeals->printJSON($myArray);
             break;
         case 'api/topics':
-            header("Access-Control-Allow-Origin: *");
-            header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
-            header("Access-Control-Max-Age: 3600");
-            header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-            header("Content-Type: application/json; charset=UTF-8");
+            $apiTopics = new JSONResponse();
+            $apiTopics->settingHeaders();
+            
             $myArray['week1'] = "PHP Basics";
             $myArray['week2'] = "Object Oriented PHP";
             $myArray['week3'] = "Web API";
             $myArray['week4'] = "SQLite Databases";
-            echo json_encode($myArray);
+
+            echo $apiTopics->printJSON($myArray);
             break;
         default:
-            echo "Error 404 page not found";
+            $apiError = new JSONResponse();
+            $apiError->settingHeaders();
+
+            $myArray['Error Message'] = "Page not found";
+
+            if (substr($userRequest->generateRequest(),0,4) == "api/"){
+                echo $apiError->printJSON($myArray);
+            }else{
+                echo "Error 404 page not found";
+            }
+                   
             break;
     }
     //autoRefresh();
