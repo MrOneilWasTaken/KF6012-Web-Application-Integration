@@ -1,24 +1,9 @@
 <?php      
-    include 'src/functions.php';
-    include 'src/webpage.php';
-    include 'src/homepage.php';
-    include 'src/contactpage.php';
-    include 'src/Request.php';
-    include 'src/JSONResponse.php';
+    include 'config/autoloader.php';
+    spl_autoload_register("autoloader");
 
     $userRequest = new Request("/webappintegration/week3/");  
-
-    /*
-    $url = $_SERVER["REQUEST_URI"];
-
-    $basepath= "/webappintegration/week3/";
-
-    $path = parse_url($url)['path'];
-    $path = str_replace($basepath,"",$path);
-    $path = strtolower($path);
-    $path = trim($path,"/");
-
-    */   
+  
     switch($userRequest->generateRequest()){
         case '':
         case 'home':
