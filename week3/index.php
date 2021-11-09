@@ -2,10 +2,7 @@
     include 'config/autoloader.php';
     spl_autoload_register("autoloader");
 
-    $userRequest = new Request("thirdyear/wai/week4/");  
-
-    
-
+    $userRequest = new Request("/webappintegration/week3/");  
   
     switch($userRequest->generateRequest()){
         case '':
@@ -36,34 +33,6 @@
             $myArray['contactURL'] = "/webappintegration/week3/contact";
 
             echo $api->printJSON($myArray);
-            break;
-        case 'api/databases':
-            header("Access-Control-Allow-Origin: *");
-            header("Access-Control-Allow-Methods: GET");
-            header("Access-Control-Max-Age: 3600");
-            header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers,Authorization, X-Requested-With");
-            header("Content-Type: application/json; charset=UTF-8");
-            $films2021 = new Database("db/films2021.sqlite");
-            $result = $films2021->executeSQL("SELECT title FROM film WHERE title like :title", ["title"=>"%river%"]);
-
-            $result = $films2021->executeSQL("SELECT actor.first_name AS first, 
-            actor.last_name AS last, 
-            film.title AS filmtitle, 
-            language.name AS languagetitle, 
-            category.name AS categoryname
-            FROM film 
-            INNER JOIN film_actor on (film.film_id = film_actor.film_id) 
-            INNER JOIN actor on (film_actor.actor_id = actor.actor_id) 
-            INNER JOIN category on (film.category_id = category.category_id)
-            INNER JOIN language on (film.language_id = language.language_id) 
-            WHERE actor.first_name 
-            like :firstname 
-            and actor.last_name 
-            like :lastname", 
-            ["firstname"=>"S%", 
-            "lastname"=>"D%"]);
-
-            echo json_encode($result);
             break;
         case 'api/meals':
             $apiMeals = new JSONResponse();

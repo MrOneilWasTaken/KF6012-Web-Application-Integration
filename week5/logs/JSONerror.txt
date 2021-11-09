@@ -1,0 +1,4 @@
+Internal server error!
+Message: File not found: JSONReponse (src\jsonreponse.php)
+File: D:\XAMPP\htdocs\webappintegration\week5\config\autoloader.php
+Line: 8

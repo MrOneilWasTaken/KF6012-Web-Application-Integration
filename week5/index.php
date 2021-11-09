@@ -1,52 +1,57 @@
 <?php      
-    include 'config/autoloader.php';
-    spl_autoload_register("autoloader");
 
-    $userRequest = new Request("thirdyear/wai/week4/");  
-
+    include 'config/config.php';
     
 
+    $request = new Request();  
+
+    $response = (substr($request->getPath(),0,3) === "api")
+        ? new JSONResponse()
+        : new HTMLResponse();
   
-    switch($userRequest->generateRequest()){
+    switch($request->getPath()){
         case '':
         case 'home':
-            $homePage = new HomePage("Week 3: Index Page", "Creating an API","This isnt a dog");
-            $homePage->addImage("dog.jpg");
-            echo $homePage->generateWebpage();
-            break;
-        case 'contact':
-            $contactPage = new ContactPage("Week 3: Contact Page", "Paths");
-            $contactPage->addImage("cat.png");
-            echo $contactPage->generateWebpage();
+            set_exception_handler('exceptionHandlerHTML');
+            $homePage = new HomePage("Week 5: Index Page", "Exception Handling","This dog lies");
+            $homePage->addImage("dog.jpg");  
+
+            
+            $response = new HTMLResponse($homePage->generateWebpage());  
+            echo $response->getData();
+            
+
+            //echo $homePage->generateWebpage();
+
             break;
         case 'documentation':
-        case 'docs':
             $docPage = new WebPage("Week 3: Documentation Page", "Documentation");
             $docPage->addParagraph("This is a frog");
             $docPage->addImage("screamingfrog.jpg");
             echo $docPage->generateWebpage();
             break;
         case 'api':
-            $api = new JSONResponse();
-            $api->settingHeaders();
-            
             $myArray['name'] = "SamOneil";
             $myArray['studentID'] = "w18018623";
             $myArray['documentationURL'] = "/webappintegration/week3/documentation";
             $myArray['contactURL'] = "/webappintegration/week3/contact";
 
-            echo $api->printJSON($myArray);
+            $response = new JSONReponse($myArray);
+
+            echo $reponse->getData();
             break;
+
         case 'api/databases':
             header("Access-Control-Allow-Origin: *");
             header("Access-Control-Allow-Methods: GET");
             header("Access-Control-Max-Age: 3600");
             header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers,Authorization, X-Requested-With");
             header("Content-Type: application/json; charset=UTF-8");
-            $films2021 = new Database("db/films2021.sqlite");
+            $films2021 = new Database(DATABASE);
             $result = $films2021->executeSQL("SELECT title FROM film WHERE title like :title", ["title"=>"%river%"]);
 
-            $result = $films2021->executeSQL("SELECT actor.first_name AS first, 
+            $result = $films2021->executeSQL(
+            "SELECT actor.first_name AS first, 
             actor.last_name AS last, 
             film.title AS filmtitle, 
             language.name AS languagetitle, 
@@ -65,6 +70,20 @@
 
             echo json_encode($result);
             break;
+        
+        case 'api/actors':
+
+            $films2021 = new Database(DATABASE);
+            $id = $request->getParameter("id");
+            $result = $films2021->executeSQL("SELECT first_name, last_name
+                                            FROM actor
+                                            WHERE actor_id = :id",
+                                            ['id'=>$id]);
+            //$respond = new JSONResponse($result);
+            echo json_encode($result);
+
+            break;
+
         case 'api/meals':
             $apiMeals = new JSONResponse();
             $apiMeals->settingHeaders();
@@ -75,6 +94,7 @@
             
             echo $apiMeals->printJSON($myArray);
             break;
+
         case 'api/topics':
             $apiTopics = new JSONResponse();
             $apiTopics->settingHeaders();
@@ -86,6 +106,7 @@
 
             echo $apiTopics->printJSON($myArray);
             break;
+
         default:
             $apiError = new JSONResponse();
             $apiError->settingHeaders();
@@ -96,8 +117,7 @@
                 echo $apiError->printJSON($myArray);
             }else{
                 echo "Error 404 page not found";
-            }
-                   
+            }    
             break;
     }
     //autoRefresh();

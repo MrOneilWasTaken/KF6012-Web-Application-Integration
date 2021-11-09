@@ -1,0 +1,4 @@
+Internal server error!
+Message: The DOG is dying
+File: D:\XAMPP\htdocs\webappintegration\week5\index.php
+Line: 14
