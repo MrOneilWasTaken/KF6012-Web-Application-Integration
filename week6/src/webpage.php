@@ -1,9 +1,29 @@
 <?php
+/**
+ * Generating a Webpage
+ * 
+ * This class creates a HTML WebPage with
+ * a head body and foot. The setBody method can
+ * be used to add to the page
+ * 
+ * @author Sam Oneil
+ * @todo 
+ */
 abstract class Webpage
 {
     private $head;
     private $foot;
     private $body;
+
+    /**
+     * Constructor
+     * 
+     * Creates the head, foot and a heading and 
+     * displays it in a valid HTML page.
+     * 
+     * @param string $title The page title
+     * @param string $heading The h1 for the site
+     */
 
     public function __construct($title, $heading)
     {
@@ -11,6 +31,14 @@ abstract class Webpage
         $this->addHeading1($heading);
         $this->setFoot();
     }
+
+    /**
+     * setHead
+     * 
+     * Create the head and save to $this->head
+     * 
+     * @param $title The page title
+     */
 
     protected function setHead($title)
     {
@@ -45,6 +73,12 @@ EOT;
         return $this->body;
     }
 
+    /**
+     * setFoot
+     * 
+     * Create the foot and save to $this->foot
+     */
+
     protected function setFoot()
     {
         $this->foot = <<<EOT
@@ -68,6 +102,13 @@ EOT;
         $this->setBody("<p>$text</p>");
     }
 
+    /**
+     * generateWebpage
+     * 
+     * Generates the full HTML webpage
+     * 
+     * @return string
+     */
     public function generateWebpage()
     {
         return $this->head . $this->body . $this->foot;

@@ -25,8 +25,14 @@ switch ($request->getPath()) {
         $controller = new ApiFilmsController($request, $response);
         break;
     case 'api/actors':
+        $controller = new ApiActorsController($request, $response);
         break;
     default:
+        if (substr($request->getPath(),0,4) == "api/"){
+            $controller = new JSONErrorController($request, $response);
+        }else{
+            $controller = new HTMLErrorController($request, $response);
+        }     
         break;
 }
 
