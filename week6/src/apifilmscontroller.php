@@ -14,17 +14,22 @@
 
             $actorID = $this->getRequest()->getParameter("actor_id");
 
-            if (!is_null($id)){
-                $this->getGateway()->findOne($id);
-            }elseif (!is_null($language)){
-                $this->getGateway()->findLanguage($language);
-            }elseif (!is_null($category)){
-                $this->getGateway()->findCategory($category);
-            }elseif(!is_null($actorID)){
-                $this->getGateway()->findActor($actorID);
+            if ($this->getRequest()->getRequestMethod() === "GET"){
+                if (!is_null($id)){
+                    $this->getGateway()->findOne($id);
+                }elseif (!is_null($language)){
+                    $this->getGateway()->findLanguage($language);
+                }elseif (!is_null($category)){
+                    $this->getGateway()->findCategory($category);
+                }elseif(!is_null($actorID)){
+                    $this->getGateway()->findActor($actorID);
+                }else{
+                    $this->getGateway()->findAll();
+                }                
             }else{
-                $this->getGateway()->findAll();
+                throw new Exception("Incorrect method used");
             }
+
 
             return $this->getGateway()->getResult();
         }

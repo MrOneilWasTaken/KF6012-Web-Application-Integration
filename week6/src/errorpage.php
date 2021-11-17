@@ -1,5 +1,5 @@
 <?php 
-    class ErrorPage extends WebPage{
-        
+    class ErrorPage extends WebPage
+    {   
     }
 ?>
