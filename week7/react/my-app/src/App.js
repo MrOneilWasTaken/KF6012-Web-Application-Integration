@@ -1,33 +1,40 @@
-//import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Greetings from './components/Greetings.js';
+import Farewell from './components/Farewell.js';
+import movieImg from './images/MykeSimonMovie.jpg';
 
-class Hello extends React.Component {
-  render() {
 
-    const name = this.props.name;
-    return (
-      <p>Hello, {name}</p>
-    )
-  }
-}
-
-class Goodbye extends React.Component {
-  render() {
-    return (
-      <p>Goodbye!</p>
-    )
-  }
-}
 
 function App() {
+  const listNames = ["John", "Casey"];
   return (
-    <div className="App">
-      <Hello name="Sam" />
-      <Goodbye />
-      <Hello name="Battyboi" />
-      <p className="normaltext" >Hello world once again markiplier here</p>
-    </div>
+    <BrowserRouter>
+      <nav className="navbar">
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="greetings">Greetings</Link></li>
+          <li><Link to="farewell">Farewell</Link></li>
+
+        </ul>
+      </nav>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={
+            <div>
+              <img src={movieImg} className="movieImg" alt="Movies" />
+              <p>Image by Myke Simon on <a href="https://unsplash.com/photos/atsUqIm3wxo">Unsplash</a></p>
+            </div>
+          } />
+          <Route path="greetings" element={<Greetings array={listNames} />} />
+          <Route path="farewell" element={<Farewell array={listNames} />} />
+          <Route path="*" element={<p>Not found</p>} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+
+
   );
 }
 
