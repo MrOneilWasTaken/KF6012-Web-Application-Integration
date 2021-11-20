@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Greetings from './components/Greetings.js';
 import Farewell from './components/Farewell.js';
 import movieImg from './images/MykeSimonMovie.jpg';
+import Films from './components/Films.js';
 
 
 
@@ -25,6 +26,7 @@ function App() {
             <div>
               <img src={movieImg} className="movieImg" alt="Movies" />
               <p>Image by Myke Simon on <a href="https://unsplash.com/photos/atsUqIm3wxo">Unsplash</a></p>
+              <Films />
             </div>
           } />
           <Route path="greetings" element={<Greetings array={listNames} />} />

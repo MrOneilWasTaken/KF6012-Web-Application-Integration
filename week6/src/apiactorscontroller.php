@@ -8,13 +8,18 @@
         protected function processRequest(){
             $id = $this->getRequest()->getParameter("id");
 
-            if (!is_null($id)){
-                $this->getGateway()->findOne($id);
+            if ($this->getRequest()->getRequestMethod() === "GET"){
+                if (!is_null($id)){
+                    $this->getGateway()->findOne($id);
+                }else{
+                    $this->getGateway()->findAll();
+                }
             }else{
-                $this->getGateway()->findAll();
+                $this->getResponse()->setMessage("Method not allowed");
+                $this->getResponse()->setStatusCode("405");
             }
+
 
             return $this->getGateway()->getResult();
         }
     }
-?>
