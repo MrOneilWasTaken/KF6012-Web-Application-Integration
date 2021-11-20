@@ -1,17 +1,14 @@
 import React from "react";
-import Film from './Film.js';
+import Actor from './Actor.js';
 
-
-class Films extends React.Component {
+class Actors extends React.Component {
     constructor(props) {
         super(props)
         this.state = { results: [] }
-
-        console.log("constructor")
     }
 
     componentDidMount() {
-        const url = "http://localhost/webappinterface/KF6012-Web-Application-Integration/week6/api/films"
+        const url = "http://localhost/webappinterface/KF6012-Web-Application-Integration/week6/api/actors"
 
         fetch(url)
             .then((response) => {
@@ -21,22 +18,18 @@ class Films extends React.Component {
                 this.setState({ results: data.results })
             })
             .catch((err) => {
-                console.log("Something went wrong ", err)
+                console.log("Something went wrong", err)
             });
     }
 
     render() {
-        console.log("render")
-
         console.log(this.state.results)
         return (
             <div>
-                {this.state.results.map((film, i) => (<Film key={i} film={film} />))}
-
+                {this.state.results.map((actor, i) => (<Actor key={i} actor={actor} />))}
             </div>
-
         )
     }
 }
 
-export default Films;
+export default Actors;
