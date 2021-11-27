@@ -1,4 +1,5 @@
 import React from "react"
+import Films from "./Films.js"
 
 class Actor extends React.Component {
     constructor(props) {
@@ -17,13 +18,13 @@ class Actor extends React.Component {
 
         if (this.state.display) {
             details = <div>
-                <p>{this.props.actor.last_name}</p>
+                <p><Films /></p>
             </div>
         }
 
         return (
             <div onClick={this.handleClick}>
-                <p>{this.props.actor.first_name}</p>
+                <p>{this.props.actor.first_name} {this.props.actor.last_name}</p>
                 {details}
             </div>
         )

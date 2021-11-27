@@ -102,6 +102,10 @@ EOT;
         $this->setBody("<p>$text</p>");
     }
 
+    public function addLink($link, $text){
+        $this->setBody("<a href='$link'>$text</a>");
+    }
+
     /**
      * generateWebpage
      * 

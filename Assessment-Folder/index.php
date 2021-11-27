@@ -27,6 +27,11 @@ switch ($request->getPath()) {
     case 'api/actors':
         $controller = new ApiActorsController($request, $response);
         break;
+    case 'api/papers':
+        $controller = new ApiPapersController($request, $response);
+        break;
+    case 'api/authors':
+        $controller = new ApiAuthorsController($request, $response);
     default:
         if (substr($request->getPath(),0,4) == "api/"){
             $controller = new JSONErrorController($request, $response);

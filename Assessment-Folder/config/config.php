@@ -1,6 +1,7 @@
 <?php 
-    define('BASEPATH','/webappinterface/KF6012-Web-Application-Integration/week6/');
-    define('DATABASE', 'db/films2021.sqlite');
+    define('BASEPATH','/webappinterface/KF6012-Web-Application-Integration/Assessment-Folder/');
+    define('USERDATABASE', 'db/user.sqlite');
+    define('DATABASE', 'db/dis.sqlite');
     define('DEVELOPMENT_MODE', true);
 
     ini_set('display_errors', DEVELOPMENT_MODE);
