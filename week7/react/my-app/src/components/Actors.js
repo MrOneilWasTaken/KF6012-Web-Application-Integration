@@ -12,7 +12,11 @@ class Actors extends React.Component {
 
         fetch(url)
             .then((response) => {
-                return response.json()
+                if (response.status === 200) {
+                    return response.json()
+                } else {
+                    throw Error(response.statusText);
+                }
             })
             .then((data) => {
                 this.setState({ results: data.results })
@@ -20,13 +24,33 @@ class Actors extends React.Component {
             .catch((err) => {
                 console.log("Something went wrong", err)
             });
+
+
+    }
+
+    filterSearch = (s) => {
+        return s.first_name.toLowerCase().includes(this.props.search.toLowerCase())
     }
 
     render() {
         console.log(this.state.results)
+        let noData = "";
+
+        if (this.state.results.length === 0) {
+            noData = <p>No data</p>
+        }
+
+        let filteredResults = this.state.results
+
+        if ((filteredResults.length > 0) && (this.props.search !== undefined)) {
+            filteredResults = this.state.results.filter(this.filterSearch)
+        }
+
         return (
             <div>
-                {this.state.results.map((actor, i) => (<Actor key={i} actor={actor} />))}
+                {noData}
+                {filteredResults.map((actor, i) => (<Actor key={i} actor={actor} />))}
+                {/* {this.state.results.map((actor, i) => (<Actor key={i} actor={actor} />))} */}
             </div>
         )
     }

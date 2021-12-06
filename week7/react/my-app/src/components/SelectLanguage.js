@@ -1,0 +1,24 @@
+import React from "react";
+
+class SelectLanguage extends React.Component {
+    render() {
+        return (
+            <div>
+                <label>
+                    Language:
+                    <select value={this.props.language} onChange={this.props.handleLanguageSelect}>
+                        <option value="">Any</option>
+                        <option value="English">English</option>
+                        <option value="Italian">Italian</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Mandarin">Mandarin</option>
+                    </select>
+                </label>
+            </div>
+        )
+    }
+}
+
+export default SelectLanguage;

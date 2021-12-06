@@ -18,7 +18,7 @@ class Actor extends React.Component {
 
         if (this.state.display) {
             details = <div>
-                <p><Films /></p>
+                <Films actorid={this.props.actor.actor_id} />
             </div>
         }
 

@@ -25,8 +25,8 @@ class Film extends React.Component {
         }
 
         return (
-            <div onClick={this.handleClick}>
-                <p>{this.props.film.title}</p>
+            <div>
+                <p onClick={this.handleClick}>{this.props.film.title}</p>
                 {details}
             </div>
         )
