@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/css/main.a617e044.chunk.css",
+    "main.js": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/main.ca2558c1.chunk.js",
+    "main.js.map": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/main.ca2558c1.chunk.js.map",
+    "runtime-main.js": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/runtime-main.d376693c.js",
+    "runtime-main.js.map": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/runtime-main.d376693c.js.map",
+    "static/js/2.b65ca600.chunk.js": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/2.b65ca600.chunk.js",
+    "static/js/2.b65ca600.chunk.js.map": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/2.b65ca600.chunk.js.map",
+    "static/js/3.03e7befe.chunk.js": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/3.03e7befe.chunk.js",
+    "static/js/3.03e7befe.chunk.js.map": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/3.03e7befe.chunk.js.map",
+    "index.html": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/index.html",
+    "static/css/main.a617e044.chunk.css.map": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/css/main.a617e044.chunk.css.map",
+    "static/js/2.b65ca600.chunk.js.LICENSE.txt": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/js/2.b65ca600.chunk.js.LICENSE.txt",
+    "static/media/gyro.7a944640.jpg": "/webappinterface/KF6012-Web-Application-Integration/week10ReactApp/static/media/gyro.7a944640.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d376693c.js",
+    "static/js/2.b65ca600.chunk.js",
+    "static/css/main.a617e044.chunk.css",
+    "static/js/main.ca2558c1.chunk.js"
+  ]
+}
