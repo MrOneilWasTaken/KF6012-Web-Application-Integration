@@ -9,8 +9,8 @@ import NotFoundPage from './components/NotFoundPage';
 
 function App() {
   return (
-    <BrowserRouter basename="{/webappinterface/KF6012-Web-Application-Integration/week10ReactApp}">
-      <div className="App">
+    <BrowserRouter>
+      < div className="App" >
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
@@ -26,8 +26,8 @@ function App() {
           <Route path="actors" element={<ActorPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </div >
+    </BrowserRouter >
   );
 }
 
