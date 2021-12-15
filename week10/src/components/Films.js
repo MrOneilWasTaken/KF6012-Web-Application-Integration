@@ -10,7 +10,7 @@ class Films extends React.Component {
     }
 
     componentDidMount() {
-        let url = "http://localhost/webappinterface/KF6012-Web-Application-Integration/week6/api/films"
+        let url = "http://localhost/webappinterface/KF6012-Web-Application-Integration/week11/api/films"
 
         if (this.props.actorid !== undefined) {
             url += "?actor_id=" + this.props.actorid

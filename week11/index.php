@@ -27,6 +27,12 @@ switch ($request->getPath()) {
     case 'api/actors':
         $controller = new ApiActorsController($request, $response);
         break;
+    case 'api/authenticate':
+        $controller = new ApiAuthenticateController($request, $response);
+        break;
+    case 'api/viewinglist':
+        $controlling = new ApiViewingListController($request, $response);
+        break;
     default:
         if (substr($request->getPath(),0,4) == "api/"){
             $controller = new JSONErrorController($request, $response);
