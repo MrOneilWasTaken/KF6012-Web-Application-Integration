@@ -7,12 +7,16 @@
         
         protected function processRequest(){
             $id = $this->getRequest()->getParameter("id");
-            $author_id = $this->getRequest()->getParameter("author_id");
+            $authorid = $this->getRequest()->getParameter("authorid");
             $award = $this->getRequest()->getParameter("award");
 
             if ($this->getRequest()->getRequestMethod() === "GET"){
                 if (!is_null($id)){
                     $this->getGateway()->findOne($id);
+                }elseif(!is_null($authorid)){
+                    $this->getGateway()->findAuthor($authorid);
+                }elseif(!is_null($award)){
+                    $this->getGateway()->findAward($award);
                 }else{
                     $this->getGateway()->findAll();
                 }

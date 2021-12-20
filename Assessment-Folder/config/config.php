@@ -1,8 +1,9 @@
 <?php 
     define('BASEPATH','/webappinterface/KF6012-Web-Application-Integration/Assessment-Folder/');
-    define('USERDATABASE', 'db/user.sqlite');
     define('DATABASE', 'db/dis.sqlite');
+    define('USER_DATABASE', 'db/user.sqlite');
     define('DEVELOPMENT_MODE', true);
+    define('SECRET_KEY', 'EcnK4O2tmn');
 
     ini_set('display_errors', DEVELOPMENT_MODE);
     ini_set('display_startup_errors', DEVELOPMENT_MODE);

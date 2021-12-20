@@ -12,8 +12,7 @@
         }
 
         public function findAll(){
-            $result = $this->getDatabase()->executeSQL($this->sql);
-            $this->setResult($result);
+            $this->setResult($this->getDatabase()->executeSQL("SELECT film.film_id, film.title, film.description, film.length, film.length, film.rating,language.name AS language, category.name AS category FROM film JOIN language on (film.language_id = language.language_id) JOIN category on (film.category_id =  category.category_id)"));
         }
 
         // URL has to have "api/films?id=[NUMBER]"

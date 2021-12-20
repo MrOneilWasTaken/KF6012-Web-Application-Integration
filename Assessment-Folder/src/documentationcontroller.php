@@ -10,7 +10,7 @@
             $page->addParagraph("Endpoint 2: /api/authors");
             $page->addParagraph("This endpoint returns an array of authors. Each item in the array lists the author's name and author ID.");
             $page->addParagraph("This endpoint supports the use of ID searching, e.g. /api/authors?id=8032");
-            $page->addParagraph("Endpoint 3: /api/papers");
+            $page->addParagraph("Endpoint 3:    /api/papers");
             $page->addParagraph("This endpoint returns an array of academic papers. Each item includes the ID of the paper, title, abstract and awards.");
             $page->addParagraph("This endpoint supports the use of ID searching, e.g. /api/papers?id=50");
             $page->addParagraph("As well as author ID searching, e.g. /api/papers?authorid=8032");

@@ -1,7 +1,7 @@
 <?php 
     class FilmGateway extends Gateway
     {
-        private $sql = "SELECT film.title, film.description, film.length, film.length, film.rating, 
+        private $sql = "SELECT film.film_id, film.title, film.description, film.length, film.length, film.rating, 
                         language.name AS language, category.name AS category 
                         FROM film 
                         JOIN language on (film.language_id = language.language_id)

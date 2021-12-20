@@ -13,7 +13,6 @@ class JSONResponse extends Response
 
     public function getData()
     {
-
         if (is_null($this->message)) {
             if (count($this->data) == 0) {
                 $this->message = "No Content";
@@ -40,15 +39,6 @@ class JSONResponse extends Response
                 "results" => $this->data
             );
         }
-
-        // $response['message'] = $this->message;
-        // $response['count'] = count($this->data);
-        // $response['results'] = $this->data;
-        // if (sizeof($this->data) > 0){
-        //     $response['message'] = "Search completed";
-        // }else{
-        //     $response['message'] = "No content";
-        // }
         return json_encode($response);
     }
 
