@@ -40,13 +40,22 @@
         public function findAward($award){
             $sql = "SELECT * 
                     FROM paper 
-                    JOIN award on (paper.paper_id = award.paper_id) 
-                    JOIN award_type on (award.award_type_id = award_type.award_type_id)
+                    INNER JOIN award on (paper.paper_id = award.paper_id) 
+                    INNER JOIN award_type on (award.award_type_id = award_type.award_type_id)
                     WHERE award.award_type_id= :award_type_id"; 
             $params = ["award_type_id" => $award];
 
             $result = $this->getDatabase()->executeSQL($sql, $params);
             $this->setResult($result);
         }
+
+        //  TO DO IF AWARD EXIsTS
+        // public function findAllAward($hasaward){
+        //     $sql = "SELECT *
+        //             FROM paper
+        //             INNER JOIN award on (paper.paper_id = award.paper_id) 
+        //             INNER JOIN award_type on (award.award_type_id = award_type.award_type_id)
+        //             ";
+        // }
     }
 ?>

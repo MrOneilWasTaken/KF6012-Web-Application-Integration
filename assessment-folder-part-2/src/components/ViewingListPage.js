@@ -26,10 +26,6 @@ class ViewingListPage extends React.Component {
     }
 
     handleLoginClick = () => {
-        console.log("Login:" + this.state.email + " " + this.state.password)
-    }
-
-    handleLoginClick = () => {
         let url = "http://localhost/webappinterface/KF6012-Web-Application-Integration/week11/api/authenticate"
 
         let formData = new FormData();

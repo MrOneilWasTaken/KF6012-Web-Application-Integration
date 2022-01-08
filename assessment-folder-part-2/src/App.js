@@ -6,6 +6,8 @@ import FilmPage from './components/FilmPage';
 import ActorPage from './components/ActorPage';
 import NotFoundPage from './components/NotFoundPage';
 import ViewingListPage from './components/ViewingListPage';
+import PapersPage from './components/PapersPage';
+import AuthorsPage from './components/AuthorsPage';
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="films">Films</Link></li>
             <li><Link to="actors">Actors</Link></li>
+            <li><Link to="papers">Papers</Link></li>
+            <li><Link to="authors">Authors</Link></li>
             <li><Link to="viewinglist">Viewing List</Link></li>
           </ul>
         </nav>
@@ -25,6 +29,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="films" element={<FilmPage />} />
           <Route path="actors" element={<ActorPage />} />
+          <Route path="papers" element={<PapersPage />} />
+          <Route path="authors" element={<AuthorsPage />} />
           <Route path="viewinglist" element={<ViewingListPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
