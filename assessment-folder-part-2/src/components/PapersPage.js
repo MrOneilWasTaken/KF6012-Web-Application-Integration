@@ -1,6 +1,4 @@
 import React from "react";
-import Films from "./Films.js";
-import SelectLanguage from "./SelectLanguage.js";
 import SearchBox from "./SearchBox.js";
 import Footer from './Footer';
 import SelectPage from "./SelectPage.js";
@@ -10,9 +8,10 @@ class PapersPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            search: "",
             titleSearch: "",
             abstractSearch: "",
-            combinedSeearch: "",
+            combinedSearch: "",
             award: "",
             page: 1
         }
@@ -22,12 +21,46 @@ class PapersPage extends React.Component {
          * this.
          * 
          */
+        this.handleSearch = this.handleSearch.bind(this);
+        this.handleNextClick = this.handleNextClick.bind(this)
+        this.handlePreviousClick = this.handlePreviousClick.bind(this)
+        this.handleAwardSelect = this.handleAwardSelect.bind(this)
+    }
+
+    handleSearch = (e) => {
+        this.setState({ search: e.target.value, page: 1 })
+    }
+
+    handleAwardSelect = (e) => {
+        this.setState({ award: e.target.value, page: 1 })
+    }
+
+    handleNextClick = () => {
+        this.setState({ page: this.state.page + 1 })
+    }
+
+    handlePreviousClick = () => {
+        this.setState({ page: this.state.page - 1 })
+    }
+
+    handlePageSelect = (e) => {
+        this.setState({ page: e.target.value })
     }
 
     render() {
         return (
             <div>
-                <Papers />
+                <SearchBox search={this.state.search} handleSearch={this.handleSearch} />
+
+                <Papers
+                    search={this.state.search}
+                    page={this.state.page}
+                    handlePreviousClick={this.handlePreviousClick}
+                    handleNextClick={this.handleNextClick}
+                    handleAwardSelect={this.handleAwardSelect}
+                />
+                {/* <AwardSearch /> */}
+                <Footer />
             </div>
         )
     }

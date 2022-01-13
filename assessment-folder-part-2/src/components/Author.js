@@ -22,7 +22,7 @@ class Author extends React.Component {
 
         return (
             <div>
-                <h1 onClick={this.handleClick}>{this.props.paper.title}</h1>
+                <h3 onClick={this.handleClick}>{this.props.author.first_name} {this.props.author.last_name}</h3>
                 {details}
             </div>
         )

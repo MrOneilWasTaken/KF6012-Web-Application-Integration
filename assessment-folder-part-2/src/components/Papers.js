@@ -7,8 +7,6 @@ class Papers extends React.Component {
         this.state = {
             results: []
         }
-
-        console.log("Mounted")
     }
 
     componentDidMount() {
@@ -24,20 +22,60 @@ class Papers extends React.Component {
                     throw Error(response.statusText);
                 }
             })
-            .then((data) => { this.setState({ results: data.results }) })
+            .then((data) => {
+                if (this.props.randomPaper) {
+                    const randomPaper = Math.floor(Math.random() * data.results.length)
+                    this.setState({ results: [data.results[randomPaper]] })
+                } else {
+                    this.setState({ results: data.results })
+                }
+            })
             .catch((err) => { console.log("Something went wrong m8", err) });
+    }
+
+    filterSearch = (s) => {
+        return s.title.toLowerCase().includes(this.props.search.toLowerCase())
     }
 
     render() {
 
         let noData = ""
 
+        if (this.state.results.length === 0) {
+            noData = <p>No Data</p>
+        }
+
+        let filteredResults = this.state.results
+
+        if ((filteredResults.length > 0) && (this.props.search !== undefined)) {
+            filteredResults = filteredResults.filter(this.filterSearch)
+        }
+
+        let buttons = ""
+
+        if (this.props.page !== undefined) {
+            const pageSize = 10
+            let pageMax = this.props.page * pageSize
+            let pageMin = pageMax - pageSize
+
+            buttons = (
+                <div>
+                    <button onClick={this.props.handlePreviousClick} disabled={this.props.page <= 1}>Previous</button>
+                    <button onClick={this.props.handleNextClick} disabled={this.props.page >= Math.ceil(filteredResults.length / pageSize)}>Next</button>
+                </div>
+            )
+            filteredResults = filteredResults.slice(pageMin, pageMax)
+        }
+
         console.log("Render")
         console.log(this.state.results)
 
         return (
             <div>
-                {this.state.results.map((paper, i) => (<Paper key={paper.title} paper={paper} />))}
+                {noData}
+                {/* {this.state.results.map((paper, i) => (<Paper key={paper.title} paper={paper} />))} */}
+                {filteredResults.map((paper, i) => (<Paper key={paper.title} paper={paper} />))}
+                {buttons}
             </div>
         )
     }

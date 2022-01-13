@@ -1,6 +1,7 @@
 import React from "react";
 import gyro from "../img/gyro.jpg";
 import Films from "./Films.js";
+import Papers from "./Papers";
 import Footer from './Footer.js';
 
 class HomePage extends React.Component {
@@ -12,6 +13,7 @@ class HomePage extends React.Component {
                     Photo by Hirohiko Araki
                 </p>
                 <Films randomFilm={true} />
+                <Papers randomPaper={true} />
                 <Footer />
             </div>
         )
