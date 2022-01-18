@@ -1,6 +1,5 @@
 import React from "react";
-import gyro from "../img/gyro.jpg";
-import Films from "./Films.js";
+import reading from "../img/reading.jpg";
 import Papers from "./Papers";
 import Footer from './Footer.js';
 
@@ -8,11 +7,10 @@ class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <img src={gyro} className="gyro" alt="Gyro Zeppeli" />
+                <img src={reading} className="gyro" alt="Reading" />
                 <p>
-                    Photo by Hirohiko Araki
+                    Photo by Christin Hume
                 </p>
-                <Films randomFilm={true} />
                 <Papers randomPaper={true} />
                 <Footer />
             </div>

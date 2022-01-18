@@ -6,6 +6,7 @@ class Footer extends React.Component {
         return (
             <div>
                 <p>Sam Oneil | w1801623</p>
+                <p>This webpage is part of the KF6012 Module @ Northumbria University</p>
             </div>
         )
     }

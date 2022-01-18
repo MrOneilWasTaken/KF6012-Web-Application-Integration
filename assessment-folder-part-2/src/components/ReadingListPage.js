@@ -2,6 +2,7 @@ import React from "react";
 import Login from "./Login.js";
 import Logout from "./Logout.js";
 import ReadingList from "./ReadingList.js";
+import Footer from "./Footer.js";
 
 class ReadingListPage extends React.Component {
     constructor(props) {
@@ -73,11 +74,16 @@ class ReadingListPage extends React.Component {
 
     render() {
         let page = (
-            <Login
-                handleEmail={this.handleEmail}
-                handlePassword={this.handlePassword}
-                handleLoginClick={this.handleLoginClick}
-            />
+            <div>
+                <h2>Log in here</h2>
+                <Login
+                    handleEmail={this.handleEmail}
+                    handlePassword={this.handlePassword}
+                    handleLoginClick={this.handleLoginClick}
+                />
+                <Footer />
+            </div>
+
         )
         if (this.state.authenticated) {
             page = (

@@ -7,10 +7,13 @@
 
         protected function processRequest(){
             $id = $this->getRequest()->getParameter("id");
+            $paperid = $this->getRequest()->getParameter("paperid");
 
             if ($this->getRequest()->getRequestMethod() === "GET"){
                 if (!is_null($id)){
                     $this->getGateway()->findOne($id);
+                }elseif(!is_null($paperid)){
+                    $this->getGateway()->findAuthorByPaperID($paperid);
                 }else{
                     $this->getGateway()->findAll();
                 }

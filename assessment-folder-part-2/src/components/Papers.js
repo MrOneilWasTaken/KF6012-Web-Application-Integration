@@ -5,7 +5,8 @@ class Papers extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: []
+            results: [],
+            actorResults: []
         }
     }
 
@@ -31,10 +32,12 @@ class Papers extends React.Component {
                 }
             })
             .catch((err) => { console.log("Something went wrong m8", err) });
+
+
     }
 
     filterSearch = (s) => {
-        return s.title.toLowerCase().includes(this.props.search.toLowerCase())
+        return s.title.toLowerCase().includes(this.props.search.toLowerCase()) || s.abstract.toLowerCase().includes(this.props.search.toLowerCase())
     }
 
     render() {
@@ -54,7 +57,7 @@ class Papers extends React.Component {
         let buttons = ""
 
         if (this.props.page !== undefined) {
-            const pageSize = 10
+            const pageSize = 2
             let pageMax = this.props.page * pageSize
             let pageMin = pageMax - pageSize
 
@@ -68,7 +71,7 @@ class Papers extends React.Component {
         }
 
         console.log("Render")
-        console.log(this.state.results)
+        console.log(filteredResults)
 
         return (
             <div>

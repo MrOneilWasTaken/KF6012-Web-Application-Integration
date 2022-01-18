@@ -1,7 +1,6 @@
 import React from "react";
 import SearchBox from "./SearchBox.js";
 import Footer from './Footer';
-import SelectPage from "./SelectPage.js";
 import Papers from "./Papers.js";
 
 class PapersPage extends React.Component {
@@ -9,18 +8,9 @@ class PapersPage extends React.Component {
         super(props)
         this.state = {
             search: "",
-            titleSearch: "",
-            abstractSearch: "",
-            combinedSearch: "",
             award: "",
             page: 1
         }
-        /**
-         * this.handleAwardSelect = this.handleAwardSelect.bind(this)
-         * this.handleTitleSearch = this.handleTitleSearch.bind(this)
-         * this.
-         * 
-         */
         this.handleSearch = this.handleSearch.bind(this);
         this.handleNextClick = this.handleNextClick.bind(this)
         this.handlePreviousClick = this.handlePreviousClick.bind(this)
